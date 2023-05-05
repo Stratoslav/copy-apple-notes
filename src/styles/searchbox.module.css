@@ -1,0 +1,35 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    background-color: rgb(190, 190, 190);
+    align-items: center;
+}
+button{
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+        display: inline-flex;
+ cursor: pointer;
+width: 41px;
+    padding: 2px 8px;
+       
+}
+.add{
+    position: relative;
+    content: url('../img/plus.png');
+}
+.remove {
+    content: url('../img/trash.png');
+}
+.edit{
+    content: url('../img/edit.png');
+}
+
+.search{
+    text-align: center;
+        border-radius: 5px;
+        border: none;
+        padding: 5px 0;
+}

@@ -1,0 +1,33 @@
+.sidebar{
+        width: 300px;
+        overflow: scroll;
+        height: 100vh;
+        
+}
+.todoListItem {
+        border-bottom: 1px solid #b8b8b8;
+}
+
+a{
+        text-decoration: none;
+        color: black;
+}
+
+ul{
+        list-style: none;
+
+}
+
+h2{
+        color: black;
+                font-size: 21px;
+        
+}
+
+.infoWrap{
+        display: flex;
+        align-items: center;
+}
+.infoWrap > p{
+        padding-left: 15px;
+}
