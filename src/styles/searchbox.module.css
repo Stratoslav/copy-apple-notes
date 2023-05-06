@@ -6,7 +6,7 @@ header{
     align-items: center;
 }
 button{
-    background-color: white;
+    /* background-color: white; */
     border: none;
     border-radius: 5px;
     margin: 0 5px;
@@ -15,6 +15,10 @@ button{
 width: 41px;
     padding: 2px 8px;
        
+}
+.buttonDisabled{
+    opacity: 0.5;
+
 }
 .add{
     position: relative;

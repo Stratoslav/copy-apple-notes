@@ -1,18 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import s from "../styles/modal.module.css";
+import { Context } from "../utils/context";
+import { useParams } from "react-router-dom";
 function Modal() {
+  const { id, deleteTodo } = useContext(Context);
+
+  console.log(id);
   return (
-    <div className={s.modal}>
-      <label className="title__label">
-        Title
-        <input className="title__input" type="text" />
-      </label>
-      <label className="text__label">
-        Text
-        <input className="text__label" type="text" />
-        <button>add</button>
-      </label>
-    </div>
+    <section className={s.modal}>
+      <h3>Delete button?</h3>
+      <button onClick={() => deleteTodo(id)}>add</button>
+    </section>
   );
 }
 
