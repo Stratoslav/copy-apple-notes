@@ -1,0 +1,63 @@
+.sidebar{
+        width: 300px;
+        overflow: scroll;
+        overflow-x: visible;
+        height: 100vh;
+        
+}
+::-webkit-scrollbar {
+        padding: 55px;
+       
+        /* height of horizontal scrollbar ← You're missing this */
+        width: 12px;
+        /* width of vertical scrollbar */
+        border: 1px solid #838383;
+     
+}
+::-webkit-scrollbar-thumb {     
+        border-radius: 5px;
+        background: #d3d1d1;
+        
+}
+::-webkit-scrollbar-track {
+        border: 1px solid #e7e7e7;
+        background-color: rgb(255, 255, 255);
+}
+
+.sidebar__notes{
+        padding: 0;
+}
+.sidebar__text{
+
+        padding-left: 10px;
+}
+.todoListItem {
+        border-bottom: 1px solid #e4e4e4;
+        padding: 0 20px;
+}
+.todoListItemActive{
+        background-color: rgb(228, 228, 228);
+}
+a{
+        text-decoration: none;
+        color: black;
+}
+
+ul{
+        list-style: none;
+
+}
+
+h2{
+        color: black;
+                font-size: 18px;
+        
+}
+
+.infoWrap{
+        display: flex;
+        align-items: center;
+}
+.infoWrap > p{
+        padding-left: 15px;
+}

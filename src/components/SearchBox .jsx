@@ -14,7 +14,7 @@ function SearchBox() {
   const [todos, setTodos] = useState([]);
   const [toggleChangeText, setToggleChangeText] = useState(false);
   const [toggleChangeTitle, setToggleChangeTitle] = useState(false);
-  const [isShosen, setIsShosen] = useState(false);
+  const [isChosen, setIsChosen] = useState(false);
   const [modal, setModal] = useState(false);
   const [filterTodo, setFilterTodo] = useState("");
 
@@ -27,7 +27,7 @@ function SearchBox() {
     handleEditNote,
   } = useContext(Context);
   const chosenTodo = () => {
-    setIsShosen(true);
+    setIsChosen(true);
   };
 
   const deleteTodo = () => {
@@ -55,6 +55,7 @@ function SearchBox() {
           toggleChangeTitle,
           setToggleChangeTitle,
           selectedNote,
+          setIsChosen,
           handleEditNote,
         }}
       >
@@ -64,7 +65,7 @@ function SearchBox() {
             <button
               onClick={() => setModal(true)}
               className={s.remove}
-              // disabled={!isShosen}
+              disabled={!isChosen}
             ></button>
             <button
               onClick={() => {
@@ -72,7 +73,7 @@ function SearchBox() {
                 setToggleChangeTitle(true);
               }}
               className={s.edit}
-              // disabled={!isShosen}
+              disabled={!isChosen}
             ></button>
           </div>
 

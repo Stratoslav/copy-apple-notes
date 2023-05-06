@@ -50,7 +50,9 @@ function Notes() {
       id: shortid.generate(),
       title: "Title",
       text: "text",
-      date: new Date(),
+      date: `${new Date().toDateString()}  ${new Date()
+        .toLocaleTimeString()
+        .substring(0, 5)}`,
     };
     openDB(NOTES_DB_NAME, 1)
       .then((db) => {
@@ -142,67 +144,6 @@ function Notes() {
         }}
       >
         <SearchBox />
-        <div>
-          <h2>Notes</h2>
-          <input
-            type="text"
-            placeholder="Search notes"
-            value={searchTerm}
-            onChange={handleSearchTermChange}
-          />
-          <ul>
-            {filteredNotes.map((note) => (
-              <li
-                key={note.id}
-                onClick={() => handleNoteClick(note)}
-                style={{
-                  fontWeight:
-                    selectedNote && selectedNote.id === note.id
-                      ? "bold"
-                      : "normal",
-                  cursor: "pointer",
-                }}
-              >
-                {note.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2>{selectedNote ? "Edit Note" : "Add Note"}</h2>
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={handleTitleChange}
-          />
-          <br />
-          <textarea
-            placeholder="Text"
-            value={text}
-            onChange={handleTextChange}
-          />
-          <br />
-          {selectedNote && (
-            <>
-              <button onClick={handleDeleteNote}>Delete</button>
-              <button onClick={handleEditNote}>Save</button>
-            </>
-          )}
-          {!selectedNote && <button onClick={handleAddNote}>Add</button>}
-        </div>
-        <div>
-          {selectedNote ? (
-            <div>
-              <h2>{selectedNote.title}</h2>
-              <p>{selectedNote.text}</p>
-            </div>
-          ) : (
-            "No note selected"
-          )}
-          {/* <h2>{selectedNote ? selectedNote.title : "No note selected"}</h2> */}
-          <div />
-        </div>
       </Context.Provider>
     </div>
   );
