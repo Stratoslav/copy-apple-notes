@@ -1,30 +1,29 @@
-import React, { useContext, useRef, useState } from "react";
-import s from "../styles/searchbox.module.css";
+import React, { useContext, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
+import SideBar from "./Sidebar";
+import Workspace from "./Workspace";
 import { Context } from "../utils/context";
 
-import shortid from "shortid";
-import { todoList } from "./ListItem";
-import SlideBar from "./Sidebar";
-import Modal from "./Modal";
-import Workspace from "./Workspace";
-import { Route, Routes, useParams } from "react-router-dom";
+import s from "../styles/searchbox.module.css";
 
 function SearchBox() {
-  const [todos, setTodos] = useState([]);
   const [toggleChangeText, setToggleChangeText] = useState(false);
   const [toggleChangeTitle, setToggleChangeTitle] = useState(false);
   const [isChosen, setIsChosen] = useState(false);
   const [modal, setModal] = useState(false);
-  const [filterTodo, setFilterTodo] = useState("");
+  const [currentText, setCurrentText] = useState("");
+  const [currentTitle, setCurrentTitle] = useState("");
 
   const {
     handleDeleteNote,
     handleAddNote,
     notes,
+    searchTerm,
     handleNoteClick,
     selectedNote,
     handleEditNote,
+    handleSearchTermChange,
   } = useContext(Context);
   const chosenTodo = () => {
     setIsChosen(true);
@@ -32,24 +31,29 @@ function SearchBox() {
 
   const deleteTodo = () => {
     handleDeleteNote();
-    // setTodos((prev) => prev.filter((p) => p.id !== id));
     setModal(false);
   };
   const searchTodo = (e) => {
-    setFilterTodo(e.target.value);
+    handleSearchTermChange(e);
   };
+
+  if (modal) {
+    window.document.body.style.background = "rgb(220 220 220)";
+  } else if (!modal) {
+    window.document.body.style.background = "#fff";
+  }
+
   return (
     <>
       <Context.Provider
         value={{
           handleAddNote,
           handleNoteClick,
-          todos,
+          searchTerm,
           notes,
           chosenTodo,
           deleteTodo,
           modal,
-          filterTodo,
           toggleChangeText,
           setToggleChangeText,
           toggleChangeTitle,
@@ -57,6 +61,11 @@ function SearchBox() {
           selectedNote,
           setIsChosen,
           handleEditNote,
+          setModal,
+          setCurrentText,
+          currentText,
+          currentTitle,
+          setCurrentTitle,
         }}
       >
         <header className="header">
@@ -81,11 +90,11 @@ function SearchBox() {
             onInput={searchTodo}
             className={s.search}
             type="text"
-            placeholder="search"
+            placeholder="&#61476; Search"
           />
         </header>
         <div style={{ display: "flex" }}>
-          {<SlideBar />}
+          {<SideBar />}
 
           <Routes>
             <Route path="/todo/:id" element={<Workspace />} />

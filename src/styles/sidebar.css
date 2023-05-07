@@ -5,6 +5,11 @@
         height: 100vh;
         
 }
+                @media(max-width: 717px) {
+                        .sidebar {
+                                width: 275px;
+                        }
+                }
 ::-webkit-scrollbar {
         padding: 55px;
        
@@ -23,7 +28,9 @@
         border: 1px solid #e7e7e7;
         background-color: rgb(255, 255, 255);
 }
-
+.sidebar__title{
+        color: #292929;
+}
 .sidebar__notes{
         padding: 0;
 }
@@ -40,7 +47,8 @@
 }
 a{
         text-decoration: none;
-        color: black;
+color: #292929;
+        /* / */
 }
 
 ul{
@@ -57,6 +65,14 @@ h2{
 .infoWrap{
         display: flex;
         align-items: center;
+}
+@media(max-width: 400px) {
+        .infoWrap {
+              display: block;
+        }
+        .sidebar__text{
+                padding: 0;
+        }
 }
 .infoWrap > p{
         padding-left: 15px;

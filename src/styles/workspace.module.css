@@ -1,21 +1,65 @@
 .workSpace {
     padding: 5px 20px;
     list-style: none;
-        width: auto;
+        width: 500px;
+            text-align: center;
+            margin-top: 20px;
 }
+@media(max-width: 858px){
+    .workSpace{
+            width: 426px;
+    }
+}
+        @media(max-width: 717px) {
+            .workSpace {
+                width: 316px;
+            }
+        }
+.workSpaceTitle, .workSpaceText{
 
+    text-align: initial;
+        word-break: break-word;
+}
 .data{
-  text-align: center;
+
   color: rgb(151, 151, 151);
 }
 
 textarea, .workspace__input{
-        width: 370px;
-            height: auto;
+    
+            background: inherit;
             display: block;
             border: none;
             margin-top: 20px;
-            font-size: 21px;
+            font-size: 16px;
             outline: none;
+
 }
 
+textarea{
+        width: 542px;
+            height: 482px;
+}
+
+@media(max-width: 925px) {
+    textarea {
+    width: 375px;
+  
+    }
+}
+@media(max-width: 770px) {
+    textarea {
+        width: 261px;
+     
+    }
+}
+@media(max-width: 650px) {
+ 
+    .workSpace{
+            width: 214px;
+    }
+    textarea {
+    width: 188px;
+
+    }
+}

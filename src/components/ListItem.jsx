@@ -11,8 +11,6 @@ function Notes() {
   const [notes, setNotes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNote, setSelectedNote] = useState(null);
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
 
   useEffect(() => {
     openDB(NOTES_DB_NAME, 1, {
@@ -32,14 +30,6 @@ function Notes() {
         console.error(error);
       });
   }, []);
-
-  function handleTitleChange(event) {
-    setTitle(event.target.value);
-  }
-
-  function handleTextChange(event) {
-    setText(event.target.value);
-  }
 
   function handleNoteClick(note) {
     setSelectedNote(note);
@@ -63,8 +53,6 @@ function Notes() {
       })
       .then(() => {
         setNotes([...notes, newNote]);
-        setTitle("");
-        setText("");
       })
       .catch((error) => {
         console.error(error);
@@ -118,13 +106,6 @@ function Notes() {
     setSearchTerm(event.target.value);
   }
 
-  const filteredNotes = notes.filter((note) => {
-    return (
-      note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      note.text.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
-
   return (
     <div>
       <Context.Provider
@@ -134,10 +115,6 @@ function Notes() {
           selectedNote,
           handleSearchTermChange,
           notes,
-          handleTitleChange,
-          handleTextChange,
-          text,
-          title,
           handleDeleteNote,
           handleEditNote,
           handleAddNote,

@@ -9,13 +9,13 @@ header{
         align-items: center;    
 }
 button{
-    /* background-color: white; */
+
     border: none;
     border-radius: 5px;
     margin: 0 5px;
         display: inline-flex;
  cursor: pointer;
-width: 41px;
+
     padding: 2px 8px;
        
 }
@@ -26,17 +26,23 @@ width: 41px;
 .add{
     position: relative;
     content: url('../img/plus.png');
+    width: 39px;
 }
 .remove {
     content: url('../img/trash.png');
+    width: 39px;
 }
 .edit{
     content: url('../img/edit.png');
+    width: 39px;
 }
 
 .search{
+
     text-align: center;
         border-radius: 5px;
         border: none;
         padding: 5px 0;
+        outline: none;
 }
+

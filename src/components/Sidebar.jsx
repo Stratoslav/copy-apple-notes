@@ -1,28 +1,38 @@
-import React, { useContext, useRef, useState } from "react";
-
+import React, { useContext, useRef } from "react";
 import { NavLink } from "react-router-dom";
-// import { todoList } from "./ListItem";
-import s from "../styles/sidebar.css";
-import { Context } from "../utils/context";
-import { todoList } from "./ListItem";
+
 import shortid from "shortid";
 
-const SlideBar = () => {
+import { Context } from "../utils/context";
+
+import "../styles/sidebar.css";
+
+const SideBar = () => {
   const ref = useRef(null);
-  const [activeClass, setActiveClass] = useState(false);
-  const { filterTodo, notes, setIsChosen, handleNoteClick } =
-    useContext(Context);
+
+  const {
+    searchTerm,
+    notes,
+    setIsChosen,
+    setCurrentText,
+    setCurrentTitle,
+    handleNoteClick,
+  } = useContext(Context);
 
   return (
     <div className={"sidebar"}>
       <ul className={"sidebar__notes"}>
         {notes
-          .filter((note) => note.title.toLowerCase().includes(filterTodo))
+
+          .filter((note) => note.title.toLowerCase().includes(searchTerm))
+          .reverse()
           .map((todo) => (
             <li
               ref={ref}
               id={shortid.generate()}
               onClick={() => {
+                setCurrentText(todo.text);
+                setCurrentTitle(todo.title);
                 handleNoteClick(todo);
                 setIsChosen(true);
               }}
@@ -30,7 +40,7 @@ const SlideBar = () => {
               key={todo.id}
             >
               <NavLink to={`/todo/${todo.id}`}>
-                <h2>
+                <h2 className="sidebar__title">
                   {todo.title.length > 20
                     ? todo.title.substring(0, 20) + "..."
                     : todo.title}
@@ -49,11 +59,8 @@ const SlideBar = () => {
             </li>
           ))}
       </ul>
-      {/* <Routes>
-        {/* <Route exact path={`//:${}`} render={() => <MessagesGet />} /> */}
-      {/* </Routes> */}
     </div>
   );
 };
 
-export default SlideBar;
+export default SideBar;

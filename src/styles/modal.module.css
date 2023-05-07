@@ -7,4 +7,17 @@
             z-index: 1000;
             box-shadow: 0px 0px 12px;
             border-radius: 5px;
+            text-align: center;
+            margin: auto 0;
+            
+          
+}
+
+.modalWrap{
+    margin-top: 100px;
+}
+
+.deleteBtn, .cancelBtn{
+    padding: 7px 15px;
+    font-size: 16px;
 }
